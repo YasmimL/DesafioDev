@@ -1,0 +1,20 @@
+.movies {
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.movie {
+  margin: 0.5rem 1rem;
+  max-width: 13.75rem;
+}
+
+.movie .card {
+  //   width: 20rem;
+}
+
+.movie .card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

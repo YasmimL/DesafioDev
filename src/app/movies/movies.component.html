@@ -1,0 +1,12 @@
+<ul class="movies">
+    <li class="movie" *ngFor="let movie of movies">
+        <div class="card shadow">
+            <img [src]="getPosterURL(movie.poster_path)" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <p class="card-text">{{movie.release_date | date: 'dd/MM/yyyy'}}</p>
+                <a href="#" class="btn btn-primary">Detalhes</a>
+            </div>
+        </div>
+    </li>
+</ul>
