@@ -10,11 +10,22 @@
 }
 
 .movie .card {
-  //   width: 20rem;
+  border-radius: 0.55rem;
+  overflow: hidden;
 }
 
 .movie .card-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.actions button {
+  width: 8.125rem;
+  margin: 0.5rem;
 }

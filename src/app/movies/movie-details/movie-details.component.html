@@ -1,0 +1,10 @@
+<div class="movie">
+    <img [src]="getPosterURL(movie.poster_path)" class="card-img-top">
+    <div>
+        <h5>{{ movie.title }}</h5>
+    </div>
+</div>
+
+<footer>
+    <button type="button" class="btn btn-primary" [routerLink]="['/']">Voltar</button>
+</footer>

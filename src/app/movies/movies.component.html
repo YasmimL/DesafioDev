@@ -5,8 +5,14 @@
             <div class="card-body">
                 <h5 class="card-title">{{ movie.title }}</h5>
                 <p class="card-text">{{movie.release_date | date: 'dd/MM/yyyy'}}</p>
-                <a href="#" class="btn btn-primary">Detalhes</a>
+                <button type="button" class="btn btn-primary" (click)="details(movie.id)">Detalhes</button>
             </div>
         </div>
     </li>
 </ul>
+
+<div class="actions">
+    <button type="button" class="btn btn-primary" (click)="scrollToTop()">Voltar ao Topo</button>
+    <button type="button" class="btn btn-primary" (click)="loadMore()" [disabled]="disableLoadMore()">Ver
+        Mais</button>
+</div>

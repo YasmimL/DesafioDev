@@ -25,10 +25,10 @@ export class MoviesService {
         return this.http.get<Movie>(url, { params: this.defaultParams });
     }
 
-    getMovies() {
+    getMovies(page: number = 1) {
         const url: string = `${this.API}discover/movie/`;
 
-        let params: HttpParams = this.defaultParams.set('page', '1');
+        let params: HttpParams = this.defaultParams.set('page', `${page}`);
         params = params.append('sort_by', 'popularity.desc');
         params = params.append('include_adult', 'false');
         params = params.append('include_video', 'false');
