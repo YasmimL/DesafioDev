@@ -38,16 +38,30 @@ export class MoviesComponent implements OnInit {
     return `${this.URLPoster}${this.posterSize}${imgPath}`
   }
 
-  loadMore() {
-    this.moviesService.getMovies(++this.currentPage).subscribe(data => { this.movies.push(...(data as any).results) });
+  nextPage() {
+    this.moviesService.getMovies(++this.currentPage).subscribe(data => {
+      this.movies = (data as any).results;
+      this.scrollToTop();
+    });
+  }
+
+  previousPage() {
+    this.moviesService.getMovies(--this.currentPage).subscribe(data => {
+      this.movies = (data as any).results;
+      this.scrollToTop();
+    });
   }
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  disableLoadMore() {
+  disableNext() {
     return this.currentPage === this.totalPages;
+  }
+
+  disablePrevious() {
+    return this.currentPage === 1;
   }
 
   details(id: number) {

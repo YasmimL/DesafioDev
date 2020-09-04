@@ -12,7 +12,7 @@
 </ul>
 
 <div class="actions">
-    <button type="button" class="btn btn-primary" (click)="scrollToTop()">Voltar ao Topo</button>
-    <button type="button" class="btn btn-primary" (click)="loadMore()" [disabled]="disableLoadMore()">Ver
-        Mais</button>
+    <button type="button" class="btn btn-primary" (click)="previousPage()"
+        [disabled]="disablePrevious()">Anterior</button>
+    <button type="button" class="btn btn-primary" (click)="nextPage()" [disabled]="disableNext()">Próximo</button>
 </div>
