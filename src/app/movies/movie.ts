@@ -5,4 +5,7 @@ export interface Movie {
     poster_path: string;
     original_language: string;
     release_date: string;
+    genres: any[];
+
 }
+

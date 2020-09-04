@@ -1,10 +1,26 @@
-<div class="movie">
-    <img [src]="getPosterURL(movie.poster_path)" class="card-img-top">
-    <div>
-        <h5>{{ movie.title }}</h5>
+<div class="page-title">
+    <h1>Detalhes do Filme</h1>
+</div>
+<div class="movie" *ngIf="!movie">
+    <h1>Carregando...</h1>
+</div>
+
+<div class="movie" *ngIf="movie">
+    <div class="movie-poster">
+        <img [src]="getPosterURL(movie.poster_path)" class="card-img-top">
+    </div>
+
+    <div class="movie-details">
+        <h1>{{ movie.title }}</h1>
+        <p><span class="movie-label">Lançamento:</span> {{movie.release_date | date: 'dd/MM/yyyy'}}</p>
+        <p><span class="movie-label">Linguagem original:</span> ({{ movie.original_language?.toUpperCase() }})</p>
+        <p><span class="movie-label">Duração:</span> {{ getRunTime(movie.runtime) }}</p>
+        <p><span class="movie-label">Gênero:</span> {{ getDisplayGenres(movie.genres) }}</p>
+        <h6></h6>
+        <p><span class="movie-label">Detalhes:</span><br>{{ movie.overview }}</p>
     </div>
 </div>
 
-<footer>
+<div class="actions">
     <button type="button" class="btn btn-primary" [routerLink]="['/']">Voltar</button>
-</footer>
+</div>

@@ -16,6 +16,7 @@ export class MovieDetailsComponent implements OnInit {
   public movie: Movie;
   URLPoster: string = environment.URLPoster;
   posterSize: string = 'w300_and_h450_bestv2/';
+  runtime: number;
 
   constructor(private route: ActivatedRoute, private moviesService: MoviesService) { }
 
@@ -25,11 +26,26 @@ export class MovieDetailsComponent implements OnInit {
   }
 
   getMovie() {
-    this.moviesService.getMovie(this.id).subscribe(data => this.movie = data);
+    this.moviesService.getMovie(this.id).subscribe(data => {
+      this.movie = data;
+      console.dir(this.movie);
+    });
+
   }
 
   getPosterURL(imgPath: string) {
-    return `${this.URLPoster}${this.posterSize}${imgPath}`
+    return `${this.URLPoster}${this.posterSize}${imgPath}`;
+  }
+
+  getRunTime(runtime: number) {
+    const horas = Math.floor(runtime / 60);
+    const minutos = runtime % 60;
+
+    return `${horas}h ${minutos}m`
+  }
+
+  getDisplayGenres(genres: any[]) {
+    return genres.map(genre => genre.name).join(", ");
   }
 
 }
