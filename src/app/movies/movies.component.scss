@@ -1,11 +1,28 @@
+.page-title {
+  padding: 1rem 0 0 2rem;
+  text-align: center;
+}
+
+.movies-container {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.movies-search {
+  flex-basis: 25%;
+  padding-left: 2rem;
+}
+
 .movies {
   list-style: none;
   display: flex;
   flex-flow: row wrap;
+  flex-basis: 75%;
+  padding-left: 2.5rem;
 }
 
 .movie {
-  margin: 0.5rem 1rem;
+  margin: 0 1rem 0.5rem 0;
   max-width: 13.75rem;
 }
 
@@ -20,12 +37,22 @@
   text-overflow: ellipsis;
 }
 
+.movie .card-img-top {
+  min-width: 218px;
+  min-height: 327px;
+}
+
 .actions {
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .actions button {
   width: 8.125rem;
   margin: 0.5rem;
+}
+
+.pagination button {
+  margin: 0;
 }

@@ -17,17 +17,17 @@ export class MoviesComponent implements OnInit {
   posterSize: string = 'w220_and_h330_face/';
   currentPage: number;
   totalPages: number;
+  movieName: string;
 
-  constructor(private moviesService: MoviesService, private router: Router) {
-
-  }
+  constructor(private moviesService: MoviesService, private router: Router) { }
 
   ngOnInit(): void {
     this.getMovies();
+    this.moviesService.emitSearch.subscribe(this.searchMovie);
   }
 
   getMovies() {
-    this.moviesService.getMovies().subscribe(data => {
+    this.moviesService.getMovies(this.movieName).subscribe(data => {
       this.currentPage = 1;
       this.totalPages = (data as any).total_pages;
       this.movies = (data as any).results;
@@ -39,14 +39,14 @@ export class MoviesComponent implements OnInit {
   }
 
   nextPage() {
-    this.moviesService.getMovies(++this.currentPage).subscribe(data => {
+    this.moviesService.getMovies(this.movieName, ++this.currentPage).subscribe(data => {
       this.movies = (data as any).results;
       this.scrollToTop();
     });
   }
 
   previousPage() {
-    this.moviesService.getMovies(--this.currentPage).subscribe(data => {
+    this.moviesService.getMovies(this.movieName, --this.currentPage).subscribe(data => {
       this.movies = (data as any).results;
       this.scrollToTop();
     });
@@ -68,5 +68,9 @@ export class MoviesComponent implements OnInit {
     this.router.navigate([id]);
   }
 
+  searchMovie = (name: string) => {
+    this.movieName = name;
+    this.getMovies();
+  }
 
 }

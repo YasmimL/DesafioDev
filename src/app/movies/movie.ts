@@ -6,6 +6,5 @@ export interface Movie {
     original_language: string;
     release_date: string;
     genres: any[];
-
 }
 

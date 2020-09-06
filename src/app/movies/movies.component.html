@@ -1,18 +1,41 @@
-<ul class="movies">
-    <li class="movie" *ngFor="let movie of movies">
-        <div class="card shadow">
-            <img [src]="getPosterURL(movie.poster_path)" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">{{ movie.title }}</h5>
-                <p class="card-text">{{movie.release_date | date: 'dd/MM/yyyy'}}</p>
-                <button type="button" class="btn btn-primary" (click)="details(movie.id)">Detalhes</button>
+<div class="page-title">
+    <h1>Filmes Populares</h1>
+</div>
+<div class="movies-container">
+
+    <div class="movies-search">
+        <app-movie-search></app-movie-search>
+    </div>
+
+    <div class="movies" *ngIf="!movies.length">
+        <h1>Nenhum filme encontrado!</h1>
+    </div>
+
+    <ul class="movies" *ngIf="movies.length">
+        <li class="movie" *ngFor="let movie of movies">
+            <div class="card shadow">
+                <img [src]="getPosterURL(movie.poster_path)" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text" *ngIf="movie.release_date">{{movie.release_date | date: 'dd/MM/yyyy'}}</p>
+                    <p class="card-text" *ngIf="!movie.release_date">Não disponível</p>
+                    <button type="button" class="btn btn-primary" (click)="details(movie.id)">Detalhes</button>
+                </div>
             </div>
-        </div>
-    </li>
-</ul>
+        </li>
+    </ul>
+</div>
+
+
 
 <div class="actions">
-    <button type="button" class="btn btn-primary" (click)="previousPage()"
-        [disabled]="disablePrevious()">Anterior</button>
-    <button type="button" class="btn btn-primary" (click)="nextPage()" [disabled]="disableNext()">Próximo</button>
+    <ul class="pagination justify-content-end">
+        <li class="page-item" [class.disabled]="disablePrevious()">
+            <button class="page-link" type="button" (click)="previousPage()">Anterior</button>
+        </li>
+        <li class="page-item disabled"><button class="page-link">{{ currentPage }} de {{ totalPages }}</button></li>
+        <li class="page-item" [class.disabled]="disableNext()">
+            <button class="page-link" type="button" (click)="nextPage()">Próximo</button>
+        </li>
+    </ul>
 </div>
