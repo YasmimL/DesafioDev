@@ -1,0 +1,29 @@
+.movies-header {
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  flex-basis: 20%;
+  color: white;
+}
+
+.header-title h5 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.header-separator {
+  flex-grow: 1;
+}
+
+.header-actions {
+  display: flex;
+  flex-basis: 20%;
+  justify-content: flex-end;
+}
+
+.header-actions button {
+  margin: 0 0.2rem;
+  font-weight: bold;
+}
