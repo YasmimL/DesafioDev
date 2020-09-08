@@ -23,6 +23,7 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
+    // Inscreve esse componente para notificações de busca de filmes.
     this.moviesService.emitSearch.subscribe(this.searchMovie);
   }
 
@@ -64,10 +65,16 @@ export class MoviesComponent implements OnInit {
     return this.currentPage === 1;
   }
 
+  /**
+   * Navega para a rota de detalhes de um filme.
+   */
   details(id: number) {
     this.router.navigate([id]);
   }
 
+  /**
+   * Callback executado quando o evento de busca de filme ocorrer.
+   */
   searchMovie = (name: string) => {
     this.movieName = name;
     this.getMovies();

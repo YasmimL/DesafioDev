@@ -12,9 +12,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Responsável por aumentar o tamanho da fonte da página.
+   */
   increaseFont() {
     const html: HTMLHtmlElement = document.querySelector('html');
-    const styles: CSSStyleDeclaration = getComputedStyle(html)
+    const styles: CSSStyleDeclaration = getComputedStyle(html);
     const maxFontSize: number = 20;
     const fontSize: number = parseInt(styles.fontSize);
     if (fontSize < maxFontSize) {
@@ -22,9 +25,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  /**
+   * Responsável por diminuir o tamanho da fonte da página.
+   */
   decreaseFont() {
     const html: HTMLHtmlElement = document.querySelector('html');
-    const styles: CSSStyleDeclaration = getComputedStyle(html)
+    const styles: CSSStyleDeclaration = getComputedStyle(html);
     const minFontSize: number = 12;
     const fontSize: number = parseInt(styles.fontSize);
     if (fontSize > minFontSize) {
@@ -32,6 +38,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  /**
+  * Responsável por restaurar o tamanho padrão da fonte da página.
+  */
   restoreFont() {
     const html: HTMLHtmlElement = document.querySelector('html');
     const defaultFontSize: number = 16;

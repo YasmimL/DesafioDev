@@ -15,6 +15,9 @@ export class MovieSearchComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  /**
+   * Realiza a busca de detalhes de um filme.
+   */
   search() {
     this.moviesService.onSearch(this.movieName);
   }

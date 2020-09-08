@@ -11,9 +11,11 @@ export class MoviesService {
     private readonly APIKey = environment.APIKey;
     private defaultParams: HttpParams;
 
-    emitSearch = new EventEmitter<string>();
+    /** Emite um evento de busca de filmes. */
+    public emitSearch = new EventEmitter<string>();
 
     constructor(private http: HttpClient) {
+        // Estes parâmetros serão utilizados por todas as requisições à API.
         this.defaultParams = new HttpParams({
             fromObject: {
                 api_key: this.APIKey,
@@ -23,11 +25,17 @@ export class MoviesService {
 
     }
 
+    /**
+     * Responsável por carregar informações de um filme.
+     */
     getMovie(id: number) {
         const url: string = `${this.API}movie/${id}`;
         return this.http.get<Movie>(url, { params: this.defaultParams });
     }
 
+    /**
+     * Responsável por carregar uma lista de filmes.
+     */
     getMovies(movieName: string = '', page: number = 1) {
         if (movieName) {
             return this.search(movieName, page);
@@ -36,19 +44,22 @@ export class MoviesService {
         return this.discover(page);
     }
 
+    /**
+     * Responsável por buscar filmes com base no nome informado.
+     */
     search(movieName: string, page: number) {
         const url: string = `${this.API}search/movie/`;
 
         let params: HttpParams = this.defaultParams.set('page', `${page}`);
-        params = params.append('sort_by', 'popularity.desc');
         params = params.append('include_adult', 'false');
-        if (movieName) {
-            params = params.append('query', movieName);
-        }
+        params = params.append('query', movieName);
 
         return this.http.get(url, { params });
     }
 
+    /**
+     * Responsável por carregar a lista de filmes mais populares.
+     */
     discover(page: number) {
         const url: string = `${this.API}discover/movie/`;
 
@@ -60,6 +71,9 @@ export class MoviesService {
         return this.http.get(url, { params });
     }
 
+    /**
+     * Notifica um evento de busca.
+     */
     onSearch(movieName: string) {
         this.emitSearch.emit(movieName);
     }
