@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   highContrast: boolean = false;
+
+  @Output() changeValue = new EventEmitter();
 
   constructor() { }
 
@@ -53,7 +55,16 @@ export class HeaderComponent implements OnInit {
   * Responsável por habilitar o alto contraste da página.
   */
   activeHighContrast() {
-    // $('#elemento').tooltip('toggle')
+    this.highContrast = !this.highContrast;
+    this.changeValue.emit({ newValue: this.highContrast });
+  }
+
+  highContrastTooltip() {
+    if (!this.highContrast) {
+      return 'Habilitar alto contraste'
+    }
+
+    return 'Desabilitar alto contraste'
   }
 
 }

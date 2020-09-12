@@ -1,1 +1,12 @@
+.app-container {
+  min-height: 100vh;
+}
 
+.high-contrast {
+  background-color: black;
+  color: white;
+}
+
+.high-contrast ::ng-deep .tooltip-inner {
+  border: 2px solid yellow;
+}

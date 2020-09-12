@@ -3,6 +3,11 @@
   align-items: center;
 }
 
+:host-context(.high-contrast) .movies-header {
+  background-color: black !important;
+  border-bottom: 1px solid white;
+}
+
 .header-title {
   flex-basis: 20%;
   color: white;
@@ -26,4 +31,19 @@
 .header-actions button {
   margin: 0 0.2rem;
   font-weight: bold;
+}
+
+:host-context(.high-contrast) .header-actions button {
+  background-color: black;
+  color: white;
+}
+
+:host-context(.high-contrast) .header-actions button:hover {
+  color: yellow;
+  border: 1px solid yellow;
+}
+
+:host-context(.high-contrast) .header-actions button:focus {
+  color: yellow;
+  border: 1px solid yellow;
 }

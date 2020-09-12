@@ -1,0 +1,22 @@
+:host-context(.high-contrast) .card-header {
+  background-color: black;
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+:host-context(.high-contrast) .card-body {
+  background-color: black;
+  color: white;
+}
+
+:host-context(.high-contrast) .form-control {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+
+:host-context(.high-contrast) button {
+  background-color: black;
+  color: white;
+  border-color: white;
+}

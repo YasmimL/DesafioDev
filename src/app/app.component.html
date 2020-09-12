@@ -1,3 +1,5 @@
-<app-header></app-header>
+<div class="app-container" [class.high-contrast]="highContrast">
+    <app-header (changeValue)=onChangeValue($event)></app-header>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+</div>

@@ -21,6 +21,21 @@
   padding-left: 2.5rem;
 }
 
+:host-context(.high-contrast) .card-body {
+  background-color: black;
+  color: white;
+}
+
+:host-context(.high-contrast) .card-body button {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+
+:host-context(.high-contrast) .shadow img {
+  border-bottom: 1px solid white;
+}
+
 .movie {
   margin: 0 1rem 0.5rem 0;
   max-width: 220px;
@@ -55,4 +70,14 @@
 
 .pagination button {
   margin: 0;
+}
+
+:host-context(.high-contrast) .page-item.disabled button {
+  background-color: black;
+  color: white;
+}
+
+:host-context(.high-contrast) .page-item button {
+  background-color: black;
+  color: yellow;
 }

@@ -32,3 +32,9 @@
 .actions {
   padding: 0 2rem;
 }
+
+:host-context(.high-contrast) .actions button {
+  background-color: black;
+  color: white;
+  border-color: white;
+}

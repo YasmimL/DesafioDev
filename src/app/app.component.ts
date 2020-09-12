@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DesafioDev';
+  highContrast: boolean = false;
+
+  onChangeValue(event: any) {
+    this.highContrast = event.newValue;
+  }
+
 }
 
 
