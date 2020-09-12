@@ -64,7 +64,7 @@ export class MoviesService {
         const url: string = `${this.API}discover/movie/`;
 
         let params: HttpParams = this.defaultParams.set('page', `${page}`);
-        params = params.append('sort_by', 'popularity.desc');
+        params = params.append('sort_by', 'popularity.desc'); //release_date.desc
         params = params.append('include_adult', 'false');
         params = params.append('include_video', 'false');
 

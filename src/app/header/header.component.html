@@ -1,20 +1,30 @@
 <nav class="navbar navbar-dark bg-dark movies-header">
 
     <div class="header-title">
-        <h5>Filmes</h5>
+        <h5 tabindex="0">Filmes</h5>
     </div>
 
     <div class="header-separator"></div>
 
     <div class="header-actions">
-        <button class="btn btn-light" type="button" (click)="increaseFont()">
+        <button class="btn btn-light" type="button" (click)="increaseFont()" tooltip="Aumentar tamanho da fonte"
+            placement="bottom">
             A+
         </button>
-        <button class="btn btn-light" type="button" (click)="restoreFont()">
+        <button class="btn btn-light" type="button" (click)="restoreFont()" tooltip="Resetar tamanho da fonte"
+            placement="bottom">
             A
         </button>
-        <button class="btn btn-light" type="button" (click)="decreaseFont()">
+        <button class="btn btn-light" type="button" (click)="decreaseFont()" tooltip="Diminuir tamanho da fonte"
+            placement="bottom">
             A-
+        </button>
+        <button class="btn btn-light" type="button" (click)="decreaseFont()" tooltip="Habilitar Alto Contraste"
+            placement="bottom">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-circle-half" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15V1a7 7 0 1 1 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+            </svg>
         </button>
     </div>
 

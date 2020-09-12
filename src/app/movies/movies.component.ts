@@ -46,11 +46,24 @@ export class MoviesComponent implements OnInit {
     });
   }
 
+  goToLastPage() {
+    this.moviesService.getMovies(this.movieName, this.totalPages).subscribe(data => {
+      this.movies = (data as any).results;
+      this.currentPage = this.totalPages;
+      this.scrollToTop();
+    })
+  }
+
   previousPage() {
     this.moviesService.getMovies(this.movieName, --this.currentPage).subscribe(data => {
       this.movies = (data as any).results;
       this.scrollToTop();
     });
+  }
+
+  goToFirstPage() {
+    this.getMovies();
+    this.scrollToTop()
   }
 
   scrollToTop() {

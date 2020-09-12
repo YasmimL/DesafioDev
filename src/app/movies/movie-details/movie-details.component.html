@@ -1,5 +1,5 @@
 <div class="page-title">
-    <h1>Detalhes do Filme</h1>
+    <h1 tabindex="0">Detalhes do Filme</h1>
 </div>
 <div class="movie" *ngIf="!movie">
     <h1>Carregando...</h1>
@@ -11,16 +11,17 @@
     </div>
 
     <div class="movie-details">
-        <h1>{{ movie.title }}</h1>
-        <p><span class="movie-label">Lançamento:</span> {{movie.release_date | date: 'dd/MM/yyyy'}}</p>
-        <p><span class="movie-label">Linguagem original:</span> ({{ movie.original_language?.toUpperCase() }})</p>
-        <p><span class="movie-label">Duração:</span> {{ getRunTime(movie.runtime) }}</p>
-        <p><span class="movie-label">Gênero:</span> {{ getDisplayGenres(movie.genres) }}</p>
-        <h6></h6>
-        <p><span class="movie-label">Detalhes:</span><br>{{ movie.overview }}</p>
+        <h1 tabindex="0">{{ movie.title }}</h1>
+        <p tabindex="0"><span class="movie-label">Lançamento:</span> {{movie.release_date | date: 'dd/MM/yyyy'}}</p>
+        <p tabindex="0"><span class="movie-label">Linguagem original:</span>
+            ({{ movie.original_language?.toUpperCase() }})</p>
+        <p tabindex="0"><span class="movie-label">Duração:</span> {{ getRunTime(movie.runtime) }}</p>
+        <p tabindex="0"><span class="movie-label">Gênero:</span> {{ getDisplayGenres(movie.genres) }}</p>
+        <p tabindex="0"><span class="movie-label">Detalhes:</span><br>{{ movie.overview }}</p>
     </div>
 </div>
 
 <div class="actions">
-    <button type="button" class="btn btn-primary" [routerLink]="['/']">Voltar</button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/']" tooltip="Voltar para página inicial"
+        placement="right">Voltar</button>
 </div>

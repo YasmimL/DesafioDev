@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  highContrast: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -45,6 +47,13 @@ export class HeaderComponent implements OnInit {
     const html: HTMLHtmlElement = document.querySelector('html');
     const defaultFontSize: number = 16;
     html.style.fontSize = `${defaultFontSize}px`;
+  }
+
+  /**
+  * Responsável por habilitar o alto contraste da página.
+  */
+  activeHighContrast() {
+    // $('#elemento').tooltip('toggle')
   }
 
 }

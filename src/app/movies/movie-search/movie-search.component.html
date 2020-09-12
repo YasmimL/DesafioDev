@@ -1,12 +1,13 @@
 <div class="card">
-    <h5 class="card-header">Buscar Filme</h5>
+    <h5 class="card-header" tabindex="0">Buscar Filme</h5>
     <div class="card-body">
         <div class="form-group">
-            <label for="movie-name">Nome</label>
+            <label for="movie-name" aria-label="Nome">Nome</label>
             <input type="text" (keyup.enter)="search()" class="form-control" id="movie-name"
                 placeholder="Nome do filme..." [(ngModel)]="movieName">
         </div>
 
-        <button type="button" class="btn btn-primary" (click)="search()">Buscar</button>
+        <button type="button" class="btn btn-primary" (click)="search()" tooltip="Buscar filme"
+            placement="bottom">Buscar</button>
     </div>
 </div>

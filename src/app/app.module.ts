@@ -10,6 +10,8 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
 import { MoviesService } from './movies/movies.service';
 import { MovieSearchComponent } from './movies/movie-search/movie-search.component';
 import { HeaderComponent } from './header/header.component';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    TooltipModule.forRoot()
   ],
   providers: [MoviesService],
   bootstrap: [AppComponent]

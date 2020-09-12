@@ -1,5 +1,5 @@
 <div class="page-title">
-    <h1>Filmes Populares</h1>
+    <h1 tabindex="0">Filmes Populares</h1>
 </div>
 <div class="movies-container">
 
@@ -14,12 +14,13 @@
     <ul class="movies" *ngIf="movies.length">
         <li class="movie" *ngFor="let movie of movies">
             <div class="card shadow">
-                <img [src]="getPosterURL(movie.poster_path)" class="card-img-top">
+                <img [src]="getPosterURL(movie.poster_path)" class="card-img-top" alt="Capa do Filme" tabindex="0">
                 <div class="card-body">
-                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <h5 class="card-title" tabindex="0">{{ movie.title }}</h5>
                     <p class="card-text" *ngIf="movie.release_date">{{movie.release_date | date: 'dd/MM/yyyy'}}</p>
                     <p class="card-text" *ngIf="!movie.release_date">Não disponível</p>
-                    <button type="button" class="btn btn-primary" (click)="details(movie.id)">Detalhes</button>
+                    <button type="button" class="btn btn-primary" (click)="details(movie.id)"
+                        tooltip="Detalhes do filme" placement="top">Detalhes</button>
                 </div>
             </div>
         </li>
@@ -29,11 +30,21 @@
 <div class="actions">
     <ul class="pagination justify-content-end">
         <li class="page-item" [class.disabled]="disablePrevious()">
-            <button class="page-link" type="button" (click)="previousPage()">Anterior</button>
+            <button class="page-link" type="button" (click)="goToFirstPage()" tooltip="Ir para primeira página"
+                placement="left">&lt;&lt;</button>
+        </li>
+        <li class="page-item" [class.disabled]="disablePrevious()">
+            <button class="page-link" type="button" (click)="previousPage()"
+                aria-label="Ir para página anterior">Anterior</button>
         </li>
         <li class="page-item disabled"><button class="page-link">{{ currentPage }} de {{ totalPages }}</button></li>
         <li class="page-item" [class.disabled]="disableNext()">
-            <button class="page-link" type="button" (click)="nextPage()">Próximo</button>
+            <button class="page-link" type="button" (click)="nextPage()"
+                aria-label="Ir para próxima página">Próximo</button>
+        </li>
+        <li class="page-item" [class.disabled]="disableNext()">
+            <button class="page-link" type="button" (click)="goToLastPage()" tooltip="Ir para última página"
+                placement="right">&gt;&gt;</button>
         </li>
     </ul>
 </div>
