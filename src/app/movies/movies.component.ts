@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MoviesService } from './movies.service';
@@ -11,6 +11,12 @@ import { Movie } from './movie';
   styleUrls: ['./movies.component.scss']
 })
 export class MoviesComponent implements OnInit {
+
+  @ViewChild("foco") nameField: ElementRef;
+
+  focusElement() {
+    this.nameField.nativeElement.focus();
+  }
 
   movies: Movie[] = [];
   URLPoster: string = environment.URLPoster;
@@ -43,6 +49,7 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getMovies(this.movieName, ++this.currentPage).subscribe(data => {
       this.movies = (data as any).results;
       this.scrollToTop();
+      this.focusElement();
     });
   }
 
@@ -51,6 +58,7 @@ export class MoviesComponent implements OnInit {
       this.movies = (data as any).results;
       this.currentPage = this.totalPages;
       this.scrollToTop();
+      this.focusElement();
     })
   }
 
@@ -58,12 +66,14 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getMovies(this.movieName, --this.currentPage).subscribe(data => {
       this.movies = (data as any).results;
       this.scrollToTop();
+      this.focusElement();
     });
   }
 
   goToFirstPage() {
     this.getMovies();
-    this.scrollToTop()
+    this.scrollToTop();
+    this.focusElement();
   }
 
   scrollToTop() {
