@@ -12,10 +12,10 @@ import { Movie } from './movie';
 })
 export class MoviesComponent implements OnInit {
 
-  @ViewChild("foco") nameField: ElementRef;
+  @ViewChild("title") titleField: ElementRef;
 
-  focusElement() {
-    this.nameField.nativeElement.focus();
+  focusTitle() {
+    this.titleField.nativeElement.focus();
   }
 
   movies: Movie[] = [];
@@ -31,6 +31,7 @@ export class MoviesComponent implements OnInit {
     this.getMovies();
     // Inscreve esse componente para notificações de busca de filmes.
     this.moviesService.emitSearch.subscribe(this.searchMovie);
+    this.focusTitle();
   }
 
   getMovies() {
@@ -49,7 +50,7 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getMovies(this.movieName, ++this.currentPage).subscribe(data => {
       this.movies = (data as any).results;
       this.scrollToTop();
-      this.focusElement();
+      this.focusTitle();
     });
   }
 
@@ -58,7 +59,7 @@ export class MoviesComponent implements OnInit {
       this.movies = (data as any).results;
       this.currentPage = this.totalPages;
       this.scrollToTop();
-      this.focusElement();
+      this.focusTitle();
     })
   }
 
@@ -66,14 +67,14 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getMovies(this.movieName, --this.currentPage).subscribe(data => {
       this.movies = (data as any).results;
       this.scrollToTop();
-      this.focusElement();
+      this.focusTitle();
     });
   }
 
   goToFirstPage() {
     this.getMovies();
     this.scrollToTop();
-    this.focusElement();
+    this.focusTitle();
   }
 
   scrollToTop() {
