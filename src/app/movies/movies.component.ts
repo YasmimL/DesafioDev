@@ -82,7 +82,7 @@ export class MoviesComponent implements OnInit {
   }
 
   disableNext() {
-    return this.currentPage === this.totalPages;
+    return this.currentPage === this.totalPages || this.totalPages == 0;
   }
 
   disablePrevious() {
