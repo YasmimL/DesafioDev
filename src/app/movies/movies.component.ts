@@ -39,6 +39,8 @@ export class MoviesComponent implements OnInit {
       this.currentPage = 1;
       this.totalPages = (data as any).total_pages;
       this.movies = (data as any).results;
+      console.log(data);
+
     });
   }
 
